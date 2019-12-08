@@ -136,8 +136,10 @@ With Rasa one is independent from other companies but still dependent on the fra
 - do you have docker available?
 - What's better Dialogflow or Rasa
 - My Next Steps (Expose, Master Thesis)
-- Details on what the chatbots can do
+- Details on what the chatbots can do (e.g. abort)
 - Which contents are interesting for the "3 Banken IT"
 - Authentication with chatbot impossible
 - Other use cases?
 - When is the prototype finished for you?
+- Handle phone calls (store data in database, retrieve on PC with key)
+- Security when replacing phone conversation with text based input (Authentication problematic)
