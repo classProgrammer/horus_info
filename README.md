@@ -140,3 +140,4 @@ With Rasa one is independent from other companies but still dependent on the fra
 - Which contents are interesting for the "3 Banken IT"
 - Authentication with chatbot impossible
 - Other use cases?
+- When is the prototype finished for you?
