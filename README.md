@@ -148,3 +148,4 @@ With Rasa one is independent from other companies but still dependent on the fra
   - Compare technologies, make prototype with the better one
   - make two prototypes and use them for comparison of technologies
 - Context can be handeled better wit Rasa (Goodbye and Welcome) 
+- pretrained entities of Dialogflow (Demonstrate)
