@@ -147,3 +147,4 @@ With Rasa one is independent from other companies but still dependent on the fra
 - Both Topics in masters thesis are possible
   - Compare technologies, make prototype with the better one
   - make two prototypes and use them for comparison of technologies
+- Context can be handeled better wit Rasa (Goodbye and Welcome) 
