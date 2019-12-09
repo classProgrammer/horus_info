@@ -48,7 +48,7 @@ A scrip the conversation has to follow e.g.
 - React Frontend: A simple React messenger frontend communicating with the Rasa server
 - Dialogflow Frontend: Provided by Dialogflow
   
-![](architecture.JPG)
+![](https://github.com/classProgrammer/horus_info/blob/master/architecture.JPG)
 
 
 ## Cloud vs Local Chatbot Development
@@ -73,8 +73,8 @@ Rasa is far more complex for developers.
 ### Price
 Rasa is open source and free of charge but offers an enterprise edition.
 Dialogflow is free of charge for small projects but costs something when more requests per minute are required.
-![](dialogflow_pricing.JPG)
-![](quotas_and_limits.JPG)
+![](https://github.com/classProgrammer/horus_info/blob/master/dialogflow_pricing.JPG)
+![](https://github.com/classProgrammer/horus_info/blob/master/quotas_and_limits.JPG)
 
 ### Customization
 Rasa offers far more options to customize the chatbot and communicate with other services for e.g. validation.
