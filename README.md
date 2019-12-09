@@ -138,6 +138,7 @@ With Rasa one is independent from other companies but still dependent on the fra
 - My Next Steps (Expose, Master Thesis)
 - Details on what the chatbots can do (e.g. abort)
 - Which contents are interesting for the "3 Banken IT"
+- Backend is written with Python (Rest Service and Rasa Actions are coded with Python)
 - Authentication with chatbot impossible
 - Other use cases?
 - When is the prototype finished for you?
