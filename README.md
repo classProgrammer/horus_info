@@ -128,9 +128,9 @@ With Rasa one is independent from other companies but still dependent on the fra
 - Discuss Architecture
 - Discuss Communication
 - Discuss Concepts
+- Multiple Users are Already Possible
 - Discuss Conversational Flow
 - Next Steps
-- What to write about in the Thesis (Implementation, Comparison)
 - Show from developer view
 - hosting
 - do you have docker available?
@@ -143,3 +143,6 @@ With Rasa one is independent from other companies but still dependent on the fra
 - When is the prototype finished for you?
 - Handle phone calls (store data in database, retrieve on PC with key)
 - Security when replacing phone conversation with text based input (Authentication problematic)
+- Both Topics in masters thesis are possible
+  - Compare technologies, make prototype with the better one
+  - make two prototypes and use them for comparison of technologies
