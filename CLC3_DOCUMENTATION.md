@@ -22,13 +22,17 @@
 
 ### Scalability
 
-### Ausfallssicherheit
+### Fail Safety/Reliability
 
 ### NoSql
 
 ### Replication
 
 ### Costs
+| Description   |      Costs/Month      | Capacity |
+|:-------------:| :-------------: | :-------------: |
+| Linux App Plan (B1) |   | |
+| col 2 is |    centered   | |
+
 
 ## Live Demo Links
-
