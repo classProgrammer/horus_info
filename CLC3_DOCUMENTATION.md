@@ -67,8 +67,16 @@ could immediately be added to the database.
 
 ### Replication
 
+<!-- TODO: Add more about Replication in Azure -->
+
+MongoDB Atlas promises to always have at least three data nodes deployed across
+fault domains (Azure), availability zones (AWS), or zones (GCP) and keep the
+data in-sync.
+
 ## UI - React Messager Frontend
+
 - ![](https://github.com/classProgrammer/horus_frontend/blob/master/frontend.JPG)
+
 ## Comparison
 
 ## Results
