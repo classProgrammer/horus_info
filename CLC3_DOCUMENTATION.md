@@ -5,9 +5,16 @@
 - Gerald Spenlingwimmer
 
 ## Relation to CLC3
+Cloud deployment with Azure.
+Usage of the cloud services "IBM Watson Assistant" and "Dialogflow".
+Development of a cloud endpoint for Rasa.
+Creation of a cloud architecture for data processing of chatbots.
+Full stack app (MongoDB <--> Rest <--> Frontend) in the cloud. 
 
 ## Problem Description
-
+Out in the real world there are still lots of problems/tasks which can be automated.
+On such task is e.g. a sickness notification or holiday notifications. To solve this problem in a creative way, to automate the process and increase user acceptance chatbots are used. 
+To be able to make people test the actual application for real in a convenient way the cloud is a wonderful solution since then the application can be tested by anyone everywhere at any given time by clicking a link. To achieve this Azure was used for prototyping. Furthermore, the differences and similarities of such frameworks are intersting from a development and end-user view. To create an overview of similiarities and differences the three frameworks "Rasa", "Dialogflow" and "IBM Watson Assistant" are used. One important factor is that Rasa is actually open source and free of charge and not a cloud framework. So additionally a non cloud framework competes against cloud only frameworks. The focus for the CLC project remains the architecture with a live demo.
 
 ## Approach
 
