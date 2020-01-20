@@ -107,6 +107,8 @@ The design is very close to what people know from WhatsApp to increase acceptanc
 - ![](https://github.com/classProgrammer/horus_frontend/blob/master/frontend.JPG)
 
 ## Results
+A working full stack cloud based architecture capable of storing and retrieving data from a MongoDB cluster with three shards, processing data from chats in a rest service, wrapping IBM Watson Assistant calls to bypass the CORS problem and displaying chats in frontends.
+The simple use case can be done with three different frameworks in similar fashion.
 
 ## Findings
 ### Chatbot Frameworks
@@ -119,7 +121,7 @@ The design is very close to what people know from WhatsApp to increase acceptanc
       - Pattern = regex to define entities yourself
       - Webhook = some address to send JSON to
       - JSON: all use json for data transmission
-  - Complexity
+  - Comparison
     - Rasa
       - rather complex
       - no intent inforamtion
@@ -134,12 +136,26 @@ The design is very close to what people know from WhatsApp to increase acceptanc
       - webhook data format freely customizable
       - Confusing for beginners
       - no programming needed
+      - CORS can't be enabled
     - Dialogflow
       - very easy to use
       - least customization capabilities
       - metadata request bloat
       - no programming needed
-
+### Azure
+- the portal is confusing at the beginning because there are so many possibilities
+- it's rather easy to deploy React apps
+- Docker containers work OK in Azure
+  - I don't use docker often so this part took quite some time
+  - an own Docker registry has been created in Azure to pull images from
+- Availability is not that great in the free tier
+  - I had no acces to all apps of one plan for 4 days so I had to cerate a new one and redeployed everything
+- Deployment can sometimes take a lot of time when strange errors occur although it shouldn't be hard
+- functionality is scathered around in the portal
+  - e.g. Error logs or logs in general are hard to find in the beginning
+  - VSCode helps with finding the logs
+- If deployment is set up once it runs smooth all the time, one click and done
+- It's possible to get into running Docker containers in a web shell interface which is pretty cool
 
 ### Costs
 
@@ -151,7 +167,7 @@ The design is very close to what people know from WhatsApp to increase acceptanc
 | IBM Watson Assistant | $0.0025USD/ message  | Standard   | Unlimited                     | -                           | Chatbot          |
 |         Rasa         | Free and Open Source | Standard   | Has to be provided yourself   | Has to be provided yourself | Chatbot          |
 |    MongoDB.Atlas     | None (free tier)     | Standard   | 512 MB                        | Shared with other instances | Data persistance |
-|     Total Costs      | 132.36 €             |            |                               |                             |                  |
+|     Total Costs      | 132.36 € +             |            |                               |                             |                  |
 
 ## Live Demo Links
 - Backend
