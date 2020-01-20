@@ -29,10 +29,11 @@
 ### Replication
 
 ### Costs
-| Description   |      Costs/Month      | Capacity |
-|:-------------:| :-------------: | :-------------: |
-| Linux App Plan (B1) |   | |
-| col 2 is |    centered   | |
+| Description   |      Costs/Month | Type | Capacity | Memory | Used For |
+|:-------------:| :-------------: | :-------------: | :-------------: | :-------------: | :-------------: |
+| Linux Plan | 70.80 - 284.41 €  | Production | 210 - 840 total Alu  | 3.5 - 14 GB | All Servers |
+| Windows Plan | 61.56 - 492.49 €   | Production | 100 total Alu - 840 totla Alu | 1.75-14 GB | React Frontends
+| Total Costs | 132.36 €
 
 
 ## Live Demo Links
