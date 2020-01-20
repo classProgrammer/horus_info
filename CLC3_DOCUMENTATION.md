@@ -55,13 +55,14 @@ To be able to make people test the actual application for real in a convenient w
 
 ### Fail Safety/Reliability
 
-### NoSql
+### NoSQL
 
 As data base, MongoDB was chosen.
 With MongoDB Atlas, it already offers a cloud solution and hosting.
-While it has little to no immediate advantage over SQL databases,
-it having no predefined structure is useful if the database should be
-re-used without having to migrate all of the data.
+Additionally to being well suited for the cloud, it also has the
+advantage of having no predefined structure.
+Extending the database therefore is possible without having to
+migrate (or lose) any data.
 
 For example, the vacation functionality was added after everything else was
 set up.
