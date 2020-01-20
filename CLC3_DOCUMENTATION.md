@@ -109,6 +109,36 @@ The design is very close to what people know from WhatsApp to increase acceptanc
 ## Results
 
 ## Findings
+### Chatbot Frameworks
+  - Similarities
+    - The basics are the same
+      - Utterance = sample sentences to train intents
+      - Intent = task to handle
+      - Entity = information to be retrieved
+      - Story = dialog flow
+      - Pattern = regex to define entities yourself
+      - Webhook = some address to send JSON to
+      - JSON: all use json for data transmission
+  - Complexity
+    - Rasa
+      - rather complex
+      - no intent inforamtion
+      - fully customizable
+      - live training
+      - programming necessary
+    - IBM Watson Assistant
+      - less complex than Rasa
+      - more complex than Dialogflow
+      - good additional intent information
+      - good customizable
+      - webhook data format freely customizable
+      - Confusing for beginners
+      - no programming needed
+    - Dialogflow
+      - very easy to use
+      - least customization capabilities
+      - metadata request bloat
+      - no programming needed
 
 
 ### Costs
