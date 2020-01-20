@@ -1,5 +1,6 @@
 # CLC3 - Project Documentation
 - Type A - Architecture
+
 ## Team
 - Oscar Ablinger
 - Gerald Spenlingwimmer
@@ -36,19 +37,21 @@ To be able to make people test the actual application for real in a convenient w
 - Azure Multi Container Environment
 - Rest
 - Webhook
-- Service
-- WebApps
+- Cloud Services
+- Azure WebApp
 - React
 - Node
+- Material Design
+- Material Icons
 
 ## Questions and Answers
 ### Automated Infrastructue Provisioning
 
 ### Scalability
 - Chatbots
-  - Rasa: is scalable itself
+  - Rasa: is scalable itself, runs in a Docker container so it can be scaled even further if necessary
   - Dialogflow: up to 160 request per minute
-  - IBM Watson Assistant: No information given but messages are unlimited
+  - IBM Watson Assistant: No information given but messages are unlimited, Session times out after a few minutes
 
 - MongoDB: Atlas offers up to 140GB RAM and 4095GB storage with no
     apparent limit to transactions.
@@ -78,14 +81,35 @@ fault domains (Azure), availability zones (AWS), or zones (GCP) and keep the
 data in-sync.
 
 ## UI - React Messager Frontend
+For the user interface a simple messanger frontend was needed.
+The basic React components of the messanger frontend are
+- Messenger
+  - Root component
+  - Container of other components
+- Header
+  - Contains the heading
+- Message Area: 
+  - Takes care of the message cards
+  - automatic scrolling is enabled 
+- Message Card: 
+  - A sender (BOT, YOU) (top left)
+  - Holds a message (middle)
+  - A timestamp (bottom right)
+  - BOT messages are blue
+  - user messages are green
+- Submit Area:
+  - Takes care of the user input 
+  - And the submission of messages
+  - ENTER can be used to trigger sending
+The design is very close to what people know from WhatsApp to increase acceptance. To increase usability a few features like automatically scroll to bottom on message receive and submit message when ENTER is pressed were implemented. It's also impossible to send an empty message.
 
+### Picture of the Frontend in Use
 - ![](https://github.com/classProgrammer/horus_frontend/blob/master/frontend.JPG)
-
-## Comparison
 
 ## Results
 
 ## Findings
+
 
 ### Costs
 
