@@ -40,3 +40,21 @@
 
 
 ## Live Demo Links
+- Backend
+  - [Rasa Server](https://3-banken-it-nlp-server.azurewebsites.net/)
+  - [Watson Service](https://3-banken-it-watson-server.azurewebsites.net/)
+  - [Rest Service / Webhook](https://3-banken-it-webhook.azurewebsites.net/)
+- Frontend
+  - [Rasa](https://3-banken-it-chatbot.azurewebsites.net/)
+  - [Watson](https://3-banken-it-chatbot-watson.azurewebsites.net/)
+  - [Dialogflow](https://3bitdialogflow.azurewebsites.net/)
+
+## Github Links
+- Backend
+  - [Rasa Server](https://github.com/classProgrammer/horus)
+  - [Watson Service](https://github.com/classProgrammer/horus_watson_server)
+  - [Rest Service / Webhook](https://github.com/classProgrammer/horus_resteasy)
+- Frontend 
+  - [Rasa](https://github.com/classProgrammer/horus_frontend)
+  - [Watson](https://github.com/classProgrammer/horus_watson_frontend)
+  - [Dialogflow](https://github.com/classProgrammer/horus_dialogflow)
