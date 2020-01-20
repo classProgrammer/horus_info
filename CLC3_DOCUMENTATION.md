@@ -48,7 +48,10 @@ To be able to make people test the actual application for real in a convenient w
 - Chatbots
   - Rasa: is scalable itself
   - Dialogflow: up to 160 request per minute
-  - IBM Watson Assistant: No information given but messages are unlimited 
+  - IBM Watson Assistant: No information given but messages are unlimited
+
+- MongoDB: Atlas offers up to 140GB RAM and 4095GB storage with no
+    apparent limit to transactions.
 
 ### Fail Safety/Reliability
 
