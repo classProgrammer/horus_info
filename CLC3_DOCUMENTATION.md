@@ -16,6 +16,23 @@
 
 
 ## Technologies
+- Python
+- Gunicorn/Flask
+- MongoDB
+- Rasa
+- Rasa X
+- Dialogflow
+- IBM Watson Assistant
+- Chatbot
+- Azure
+- Docker
+- Azure Multi Container Environment
+- Rest
+- Webhook
+- Service
+- WebApps
+- React
+- Node
 
 ## Questions and Answers
 ### Automated Infrastructue Provisioning
