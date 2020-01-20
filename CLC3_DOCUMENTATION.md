@@ -54,6 +54,17 @@ To be able to make people test the actual application for real in a convenient w
 
 ### NoSql
 
+As data base, MongoDB was chosen.
+With MongoDB Atlas, it already offers a cloud solution and hosting.
+While it has little to no immediate advantage over SQL databases,
+it having no predefined structure is useful if the database should be
+re-used without having to migrate all of the data.
+
+For example, the vacation functionality was added after everything else was
+set up.
+All of the previous data could be kept as-is and the new vacation objects
+could immediately be added to the database.
+
 ### Replication
 
 ## UI - React Messager Frontend
