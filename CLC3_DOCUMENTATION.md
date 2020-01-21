@@ -201,25 +201,23 @@ of Rasa's backend.
 
 ## Technologies
 
-- Python
-- Gunicorn/Flask
-- MongoDB
-- Rasa
-- Rasa X
-- Dialogflow
-- IBM Watson Assistant
+- **Python** as the general programming language for the servers
+- **Gunicorn/Flask** to start the REST-servers
+- **MongoDB** in the backend as the data-storage
+- **Rasa** and the wrapper **Rasa X** as one of the model trainers
+    and chatbot framework
+- **Dialogflow** is another chatbot framework that was used
+- **IBM Watson Assistant** as the third chatbot framework
 - Chatbot
-- Azure
-- Docker
-- Azure Multi Container Environment
-- REST
+- **Azure** to host all of our own services, that weren't automatically
+    integrated into another cloud provider
+- **Docker** for developement and to wrap around the Rasa programs
+- **Azure Multi Container Environment**
 - Webhook
 - Cloud Services
-- Azure WebApp
-- React
-- Node
-- Material Design
-- Material Icons
+- **Azure WebApp**
+- **React** and **Node** for the front-end developement
+- **Material Design** and **Material Icons** for the styling of the front-ends
 
 ## Questions and Answers
 ### Automated Infrastructue Provisioning
