@@ -147,7 +147,7 @@ Using Dialogflow next to no hosting has to be done outside of what it
 already offers.
 It is automatically integrated into the Google Cloud Platform.
 
-The frontend that can be found in `dialogflow` is barely a react-wrapper
+The frontend that can be found in `dialogflow_frontend` is just a simple react-wrapper
 around an iframe that is provided by Dialogflow itself.
 
 The models used can be found in the folder `models`.
