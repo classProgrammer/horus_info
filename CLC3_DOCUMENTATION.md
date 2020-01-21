@@ -221,7 +221,7 @@ of Rasa's backend.
 
 ## Questions and Answers
 
-### Automated Infrastructue Provisioning
+### Automated Infrastructure Provisioning
 
 For the size of this project automated infrastructure provisioning was
 not necessary.
