@@ -1,5 +1,6 @@
 # CLC3 - Project Documentation
 - Type A - Architecture
+
 ## Team
 - Oscar Ablinger
 - Gerald Spenlingwimmer
@@ -197,10 +198,12 @@ of Rasa's backend.
 - Azure Multi Container Environment
 - Rest
 - Webhook
-- Service
-- WebApps
+- Cloud Services
+- Azure WebApp
 - React
 - Node
+- Material Design
+- Material Icons
 
 ## Questions and Answers
 ### Automated Infrastructue Provisioning
@@ -208,22 +211,23 @@ of Rasa's backend.
 ### Scalability
 
 - Chatbots
-  - Rasa: is scalable itself
+  - Rasa: is scalable itself, runs in a Docker container so it can be scaled even further if necessary
   - Dialogflow: up to 160 request per minute
-  - IBM Watson Assistant: No information given but messages are unlimited
+  - IBM Watson Assistant: No information given but messages are unlimited, Session times out after a few minutes
 
 - MongoDB: Atlas offers up to 140GB RAM and 4095GB storage with no
     apparent limit to transactions.
 
 ### Fail Safety/Reliability
 
-### NoSql
+### NoSQL
 
 As data base, MongoDB was chosen.
 With MongoDB Atlas, it already offers a cloud solution and hosting.
-While it has little to no immediate advantage over SQL databases,
-it having no predefined structure is useful if the database should be
-re-used without having to migrate all of the data.
+Additionally to being well suited for the cloud, it also has the
+advantage of having no predefined structure.
+Extending the database therefore is possible without having to
+migrate (or lose) any data.
 
 For example, the vacation functionality was added after everything else was
 set up.
@@ -238,11 +242,82 @@ MongoDB Atlas promises to always have at least three data nodes deployed across
 fault domains (Azure), availability zones (AWS), or zones (GCP) and keep the
 data in-sync.
 
-## Comparison
+## UI - React Messager Frontend
+For the user interface a simple messanger frontend was needed.
+The basic React components of the messanger frontend are
+- Messenger
+  - Root component
+  - Container of other components
+- Header
+  - Contains the heading
+- Message Area: 
+  - Takes care of the message cards
+  - automatic scrolling is enabled 
+- Message Card: 
+  - A sender (BOT, YOU) (top left)
+  - Holds a message (middle)
+  - A timestamp (bottom right)
+  - BOT messages are blue
+  - user messages are green
+- Submit Area:
+  - Takes care of the user input 
+  - And the submission of messages
+  - ENTER can be used to trigger sending
+The design is very close to what people know from WhatsApp to increase acceptance. To increase usability a few features like automatically scroll to bottom on message receive and submit message when ENTER is pressed were implemented. It's also impossible to send an empty message.
+
+### Picture of the Frontend in Use
+- ![](https://github.com/classProgrammer/horus_frontend/blob/master/frontend.JPG)
 
 ## Results
+A working full stack cloud based architecture capable of storing and retrieving data from a MongoDB cluster with three shards, processing data from chats in a rest service, wrapping IBM Watson Assistant calls to bypass the CORS problem and displaying chats in frontends.
+The simple use case can be done with three different frameworks in similar fashion.
 
 ## Findings
+### Chatbot Frameworks
+  - Similarities
+    - The basics are the same
+      - Utterance = sample sentences to train intents
+      - Intent = task to handle
+      - Entity = information to be retrieved
+      - Story = dialog flow
+      - Pattern = regex to define entities yourself
+      - Webhook = some address to send JSON to
+      - JSON: all use json for data transmission
+  - Comparison
+    - Rasa
+      - rather complex
+      - no intent inforamtion
+      - fully customizable
+      - live training
+      - programming necessary
+    - IBM Watson Assistant
+      - less complex than Rasa
+      - more complex than Dialogflow
+      - good additional intent information
+      - good customizable
+      - webhook data format freely customizable
+      - Confusing for beginners
+      - no programming needed
+      - CORS can't be enabled
+    - Dialogflow
+      - very easy to use
+      - least customization capabilities
+      - metadata request bloat
+      - no programming needed
+### Azure
+- the portal is confusing at the beginning because there are so many possibilities
+- it's rather easy to deploy React apps
+- Docker containers work OK in Azure
+  - I don't use docker often so this part took quite some time
+  - an own Docker registry has been created in Azure to pull images from
+- Availability is not that great in the free tier
+  - I had no acces to all apps of one plan for 4 days so I had to cerate a new one and redeployed everything
+- Deployment can sometimes take a lot of time when strange errors occur although it shouldn't be hard
+- functionality is scathered around in the portal
+  - e.g. Error logs or logs in general are hard to find in the beginning
+  - VSCode helps with finding the logs
+- If deployment is set up once it runs smooth all the time, one click and done
+- It's possible to get into running Docker containers in a web shell interface which is pretty cool
 
 ### Costs
 
@@ -254,7 +329,7 @@ data in-sync.
 | IBM Watson Assistant | $0.0025USD/ message  | Standard   | Unlimited                     | -                           | Chatbot          |
 |         Rasa         | Free and Open Source | Standard   | Has to be provided yourself   | Has to be provided yourself | Chatbot          |
 |    MongoDB.Atlas     | None (free tier)     | Standard   | 512 MB                        | Shared with other instances | Data persistance |
-|     Total Costs      | 132.36 €             |            |                               |                             |                  |
+|     Total Costs      | 132.36 € +             |            |                               |                             |                  |
 
 ## Live Demo Links
 - Backend
