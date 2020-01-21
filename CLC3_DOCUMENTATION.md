@@ -220,7 +220,18 @@ of Rasa's backend.
 - **Material Design** and **Material Icons** for the styling of the front-ends
 
 ## Questions and Answers
+
 ### Automated Infrastructue Provisioning
+
+For the size of this project automated infrastructure provisioning was
+not necessary.
+However, all of the services can individually and easily be scaled by requesting
+more ressources from the cloud providers.
+Even for the data backend MongoDB.Atlas allows a way to easily updgrade
+the amount of RAM and storage that they provide.
+
+Therefore there is not a single point in the applications that could not
+be scaled up just through requesting more ressources.
 
 ### Scalability
 
