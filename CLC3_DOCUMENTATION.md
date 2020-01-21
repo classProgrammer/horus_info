@@ -17,9 +17,6 @@ Out in the real world, there are still lots of problems/tasks which can be autom
 One such task is e.g. a sickness notification or holiday notifications. To solve this problem creatively, to automate the process and increase user acceptance chatbots are used. 
 To be able to make people test the actual application for real in a convenient way the cloud is a wonderful solution since then the application can be tested by anyone everywhere at any given time by clicking a link. To achieve this Azure was used for prototyping. Furthermore, the differences and similarities of such frameworks are interesting from development and end-user view. To create an overview of similarities and differences the three frameworks "Rasa", "Dialogflow" and "IBM Watson Assistant" are used. One important factor is that Rasa is open source and free of charge and not a cloud framework. So additionally a non-cloud framework competes against cloud-only frameworks. The focus for the CLC project remains the architecture with a live demo. The expected result is that all three frameworks are processed similarly.
 
-## Methodology
-
-
 ## Architecture
 
 The architecture can be categorized into four different parts:
