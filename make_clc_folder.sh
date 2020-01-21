@@ -19,6 +19,7 @@ for project in ${projects[@]}; do
     IFS=',' read gitrepo name <<< "$project"
 
     git clone --depth 1 "$base_url$gitrepo$base_postfix" "clc/$name"
+    rm -rf "clc/$name/.git"
 done
 
 cp CLC3_DOCUMENTATION.md clc/DOCUMENTATION.md
