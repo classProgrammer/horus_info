@@ -272,11 +272,11 @@ could immediately be added to the database.
 
 ### Replication
 
-<!-- TODO: Add more about Replication in Azure -->
-
 MongoDB Atlas promises to always have at least three data nodes deployed across
-fault domains (Azure), availability zones (AWS), or zones (GCP) and keep the
-data in-sync.
+fault domains (or availability zones if AWS was used or zones for GCP) and
+keep the data in-sync.
+
+![MongoDB Atlas shards](MongoDB.Atlas-shards.png)
 
 ### Picture of the Frontend in Use
 - ![](https://github.com/classProgrammer/horus_frontend/blob/master/frontend.JPG)
