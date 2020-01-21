@@ -24,5 +24,7 @@ done
 
 cp CLC3_DOCUMENTATION.md clc/DOCUMENTATION.md
 cp CLC3_DOCUMENTATION.pdf clc/DOCUMENTATION.pdf
+cp MongoDB.Atlas-shards.png clc
+cp new_architecture.png clc
 
 zip -r Spenlingwimmer_Ablinger.zip clc/* && rm -rf clc/
