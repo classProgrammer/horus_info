@@ -114,14 +114,26 @@ is the Core of the application that is provided by rasa docker image.
 The frontend for rasa can be found in the folder `frontend`.
 It's implemented using React.js and consists of five main components:
 
-- _Messenger_: The main component that contains all of the other components.
-    It also manages the REST calls.
-- _MessengerSubmitArea_: Chat input and submit button
-- _MessageArea_: The wrapper for all of the message cards
-- _MessageCard_: A card that represents a message
-- _MessengerToolbar_: Purely visual component
+- _Messenger_: 
+  - The main component that contains all of the other components.
+  - It also manages the REST calls.
+- _MessengerSubmitArea_: 
+  - Chat input and submit button
+  - ENTER can be used for submit
+- _MessageArea_: 
+  - The wrapper for all of the message cards
+  - automatically scrolls to bottom when a message is received
+- _MessageCard_: 
+  - A card that represents a message
+  - Has a sender (BOT, YOU)
+  - Has a timestamp with milliseconds
+    - How long does a requests take?
+    - How long does the cold start take?
+- _MessengerToolbar_: 
+  - Purely visual component
+  - Holds a heading for the messenger
 
-The design is very close to what people know from WhatsApp to increase acceptance. To increase usability a few features like automatically scroll to bottom on message receive and submit message when ENTER is pressed were implemented. It's also impossible to send an empty message.
+The design is close to what people are used to from WhatsApp to increase acceptance. To increase usability a few features like automatically scroll to bottom on message receive and submit message when ENTER is pressed were implemented. It's also impossible to send an empty message.
 Put together it looks like this:
 
 ![](https://github.com/classProgrammer/horus_frontend/raw/master/frontend.JPG)
