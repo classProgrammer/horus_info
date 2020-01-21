@@ -243,6 +243,9 @@ fault domains (Azure), availability zones (AWS), or zones (GCP) and keep the
 data in-sync.
 
 ## UI - React Messager Frontend
+
+<!-- TODO: Merge this section with #Architecture #Rasa and #Watson -->
+
 For the user interface a simple messanger frontend was needed.
 The basic React components of the messanger frontend are
 - Messenger
