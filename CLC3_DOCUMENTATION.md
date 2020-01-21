@@ -10,7 +10,7 @@ Cloud deployment with Azure.
 Usage of the cloud services "IBM Watson Assistant" and "Dialogflow".
 Development of a cloud endpoint for Rasa.
 Creation of a cloud architecture for data processing of chatbots.
-Full stack app (MongoDB <--> Rest <--> Frontend) in the cloud. 
+Full stack app (MongoDB <--> REST <--> Frontend) in the cloud. 
 
 ## Problem Description
 Out in the real world there are still lots of problems/tasks which can be automated.
@@ -24,7 +24,7 @@ To be able to make people test the actual application for real in a convenient w
 
 The architecture can be categorized into four different parts:
 
-1. The data backend (MongoDB + Rest Service),
+1. The data backend (MongoDB + REST Service),
 2. the Rasa implementation,
 3. the Dialogflow implementation and
 4. the Watson implementation.
@@ -45,7 +45,7 @@ The MongoDB documents are hoted via MongoDB.Atlas in Azure.
 By default they consist of three shards, that are automatically
 managed.
 
-The only interaction with that database is over its rest service, whose
+The only interaction with that database is over its REST service, whose
 implementation can be found in the `/resteasy` folder.
 The service itself is, again, hosted in Azure.
 
@@ -102,13 +102,16 @@ Additionally for testing some more end points were implemented:
 ### Rasa
 
 Since Rasa is just a framework for chatbots and doesn't offer any cloud
-solution itself, it was wrapped in a docker container, which was then deployed
-to Azure.
+solution itself, it was wrapped in a docker container, which was then deployed to an Azure multi-container environment.
+The images are created with the .Docker files and pushed to an Azure container registry. From there they can be pulled into the multi-container environment with a docker-compose file.
 The dockerfiles and docker-compose files can be found in the folder `rasa`,
 together with the actions, data, models and the domain for rasa itself.
 
 The **Rasa Action Server** is used for custom commands, while **Rasa**
 is the Core of the application that is provided by rasa docker image.
+Rasa handles the whole NLP/NLU part. It is used to create and run the model and handles the whole chat. The action server is used for data validation/collection and communication with external components. 
+The Rasa action server was used for the entity/data collection from the chat.
+Furthermore, the action server is a backend which can validate data components and communicate with external services and takes care of the submission of the collected data to the REST service.
 
 
 The frontend for rasa can be found in the folder `frontend`.
@@ -209,7 +212,7 @@ of Rasa's backend.
 - Azure
 - Docker
 - Azure Multi Container Environment
-- Rest
+- REST
 - Webhook
 - Cloud Services
 - Azure WebApp
@@ -259,7 +262,7 @@ data in-sync.
 - ![](https://github.com/classProgrammer/horus_frontend/blob/master/frontend.JPG)
 
 ## Results
-A working full stack cloud based architecture capable of storing and retrieving data from a MongoDB cluster with three shards, processing data from chats in a rest service, wrapping IBM Watson Assistant calls to bypass the CORS problem and displaying chats in frontends.
+A working full stack cloud based architecture capable of storing and retrieving data from a MongoDB cluster with three shards, processing data from chats in a REST service, wrapping IBM Watson Assistant calls to bypass the CORS problem and displaying chats in frontends.
 The simple use case can be done with three different frameworks in similar fashion.
 
 ## Findings
@@ -325,7 +328,7 @@ The simple use case can be done with three different frameworks in similar fashi
 - Backend
   - [Rasa Server](https://3-banken-it-nlp-server.azurewebsites.net/)
   - [Watson Service](https://3-banken-it-watson-server.azurewebsites.net/)
-  - [Rest Service / Webhook](https://3-banken-it-webhook.azurewebsites.net/)
+  - [REST Service / Webhook](https://3-banken-it-webhook.azurewebsites.net/)
 - Frontend
   - [Rasa](https://3-banken-it-chatbot.azurewebsites.net/)
   - [Watson](https://3-banken-it-chatbot-watson.azurewebsites.net/)
@@ -335,7 +338,7 @@ The simple use case can be done with three different frameworks in similar fashi
 - Backend
   - [Rasa Server](https://github.com/classProgrammer/horus)
   - [Watson Service](https://github.com/classProgrammer/horus_watson_server)
-  - [Rest Service / Webhook](https://github.com/classProgrammer/horus_resteasy)
+  - [REST Service / Webhook](https://github.com/classProgrammer/horus_RESTeasy)
 - Frontend 
   - [Rasa](https://github.com/classProgrammer/horus_frontend)
   - [Watson](https://github.com/classProgrammer/horus_watson_frontend)
