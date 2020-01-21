@@ -279,7 +279,8 @@ keep the data in-sync.
 ![MongoDB Atlas shards](MongoDB.Atlas-shards.png)
 
 ### Picture of the Frontend in Use
-- ![](https://github.com/classProgrammer/horus_frontend/blob/master/frontend.JPG)
+
+![](https://github.com/classProgrammer/horus_frontend/blob/master/frontend.JPG)
 
 ## Results
 A working full stack cloud based architecture capable of storing and retrieving data from a MongoDB cluster with three shards, processing data from chats in a REST service, wrapping IBM Watson Assistant calls to bypass the CORS problem and displaying chats in frontends.
