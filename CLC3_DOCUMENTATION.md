@@ -245,6 +245,17 @@ be scaled up just through requesting more ressources.
 
 ### Fail Safety/Reliability
 
+The project depends on the cloud providers to also guarantee
+reliability and restart failing services.
+Restarting any service should have only minimal effects on the
+entire system:
+- MongoDB.Atlas automatically duplicates data, so none _should_ be lost
+- The rest of the systems only store minimal session data, that
+    is not intended to be permanent anyways
+
+The free tiers that were used, of course, also affect the priority
+of issues set by the providers.
+
 ### NoSQL
 
 As data base, MongoDB was chosen.
