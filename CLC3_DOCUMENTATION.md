@@ -9,13 +9,13 @@
 Cloud deployment with Azure.
 Usage of the cloud services "IBM Watson Assistant" and "Dialogflow".
 Development of a cloud endpoint for Rasa.
-Creation of a cloud architecture for data processing of chatbots.
+Creation of cloud architecture for data processing of chatbots.
 Full stack app (MongoDB <--> REST <--> Frontend) in the cloud. 
 
 ## Problem Description
-Out in the real world there are still lots of problems/tasks which can be automated.
-On such task is e.g. a sickness notification or holiday notifications. To solve this problem in a creative way, to automate the process and increase user acceptance chatbots are used. 
-To be able to make people test the actual application for real in a convenient way the cloud is a wonderful solution since then the application can be tested by anyone everywhere at any given time by clicking a link. To achieve this Azure was used for prototyping. Furthermore, the differences and similarities of such frameworks are intersting from a development and end-user view. To create an overview of similiarities and differences the three frameworks "Rasa", "Dialogflow" and "IBM Watson Assistant" are used. One important factor is that Rasa is actually open source and free of charge and not a cloud framework. So additionally a non cloud framework competes against cloud only frameworks. The focus for the CLC project remains the architecture with a live demo. The expected result is that all three frameworks are processed in a similar fashion.
+Out in the real world, there are still lots of problems/tasks which can be automated.
+One such task is e.g. a sickness notification or holiday notifications. To solve this problem creatively, to automate the process and increase user acceptance chatbots are used. 
+To be able to make people test the actual application for real in a convenient way the cloud is a wonderful solution since then the application can be tested by anyone everywhere at any given time by clicking a link. To achieve this Azure was used for prototyping. Furthermore, the differences and similarities of such frameworks are interesting from development and end-user view. To create an overview of similarities and differences the three frameworks "Rasa", "Dialogflow" and "IBM Watson Assistant" are used. One important factor is that Rasa is open source and free of charge and not a cloud framework. So additionally a non-cloud framework competes against cloud-only frameworks. The focus for the CLC project remains the architecture with a live demo. The expected result is that all three frameworks are processed similarly.
 
 ## Methodology
 
@@ -33,7 +33,7 @@ Both Rasa's and Watson's implementation consist of a front and a
 backend; only Dialogflow's backend did not require an additional
 implementation.
 
-The below diagram shows how the different points are connected with each other.
+The below diagram shows how the different points are connected.
 
 ![UML-Diagram of the architecture](new_architecture.png)
 
@@ -41,15 +41,15 @@ The below diagram shows how the different points are connected with each other.
 
 All chatbot implementations use the same data from the MongoDB
 backend.
-The MongoDB documents are hoted via MongoDB.Atlas in Azure.
-By default they consist of three shards, that are automatically
+The MongoDB documents are hosted via MongoDB.Atlas in Azure.
+By default, they consist of three shards, that are automatically
 managed.
 
 The only interaction with that database is over its REST service, whose
 implementation can be found in the `/resteasy` folder.
 The service itself is, again, hosted in Azure.
 
-The following end points are defined:
+The following endpoints are defined:
 
 - **GET `/`** checks whether the service is currently up
 - **GET `/sick`** returns whether a user is sick
@@ -66,13 +66,13 @@ The following end points are defined:
     > ```
 
 - **POST `/dialogflow/webhook`** and **POST `/watson/webhook`**
-    are the end points for the dialogflow and watson implementations
+    are the endpoints for the Dialogflow and Watson implementations
     respectively.
     Both read the intent of the request and depending on that either
     register someone as sick or register a vacation (the later of
-    which is only avaialable in the dialogflow implementation).
+    which is only available in the Dialogflow implementation).
 
-Additionally for testing some more end points were implemented:
+Additionally for testing some more endpoints were implemented:
 
 - **POST `/sick`** registers a user as sick
     > For example a request body like this is expected:
@@ -97,21 +97,20 @@ Additionally for testing some more end points were implemented:
     > ```
 
 - **GET `/dialogflow/requests`** and **GET `/watson/requests`** return
-    the last request to the dialogflow and watson webhook respectively.
+    the last request to the Dialogflow and Watson webhook respectively.
 
 ### Rasa
 
-Since Rasa is just a framework for chatbots and doesn't offer any cloud
-solution itself, it was wrapped in a docker container, which was then deployed to an Azure multi-container environment.
-The images are created with the .Docker files and pushed to an Azure container registry. From there they can be pulled into the multi-container environment with a docker-compose file.
-The dockerfiles and docker-compose files can be found in the folder `rasa`,
+Since Rasa is just a framework for chatbots and doesn't offer any cloud solution itself, it was wrapped in a docker container, which was then deployed to an Azure multi-container environment.
+The images are created with the .Dockerfiles and pushed to an Azure container registry. From there they can be pulled into the multi-container environment with a docker-compose file.
+The .Dockerfiles and docker-compose files can be found in the folder `rasa`,
 together with the actions, data, models and the domain for rasa itself.
 
 The **Rasa Action Server** is used for custom commands, while **Rasa**
-is the Core of the application that is provided by rasa docker image.
+is the Core of the application that is provided by Rasa docker image.
 Rasa handles the whole NLP/NLU part. It is used to create and run the model and handles the whole chat. The action server is used for data validation/collection and communication with external components. 
 The Rasa action server was used for the entity/data collection from the chat.
-Furthermore, the action server is a backend which can validate data components and communicate with external services and takes care of the submission of the collected data to the REST service.
+Furthermore, the action server is a backend that can validate data components and communicate with external services and takes care of the submission of the collected data to the REST service.
 
 
 The frontend for rasa can be found in the folder `frontend`.
@@ -122,7 +121,7 @@ It's implemented using React.js and consists of five main components:
   - It also manages the REST calls.
 - _MessengerSubmitArea_: 
   - Chat input and submit button
-  - ENTER can be used for submit
+  - ENTER can be used for submitting
 - _MessageArea_: 
   - The wrapper for all of the message cards
   - automatically scrolls to bottom when a message is received
@@ -130,13 +129,13 @@ It's implemented using React.js and consists of five main components:
   - A card that represents a message
   - Has a sender (BOT, YOU)
   - Has a timestamp with milliseconds
-    - How long does a requests take?
+    - How long do requests take?
     - How long does the cold start take?
 - _MessengerToolbar_: 
   - Purely visual component
   - Holds a heading for the messenger
 
-The design is close to what people are used to from WhatsApp to increase acceptance. To increase usability a few features like automatically scroll to bottom on message receive and submit message when ENTER is pressed were implemented. It's also impossible to send an empty message.
+The design is close to what people are used to from WhatsApp to increase acceptance. To increase usability a few features like automatically scroll to the bottom on message receive and submit message when ENTER is pressed were implemented. It's also impossible to send an empty message.
 Put together it looks like this:
 
 ![](https://github.com/classProgrammer/horus_frontend/raw/master/frontend.JPG)
@@ -162,7 +161,7 @@ The models for it can be found in the folder `models`.
 
 Additionally, however, a REST-API that connects to that cloud instance, was
 created.
-It can be found in `watson_server` and has the following end points:
+It can be found in `watson_server` and has the following endpoints:
 
 - **GET `/`** checks whether the server is online
 - **GET `/watson/session`** creates a new session with the Watson
@@ -192,7 +191,7 @@ It can be found in `watson_server` and has the following end points:
     >           "intent": "Hello" }]
     > }}
 
-The frontend for watson is a fork of Rasa's front end and can be found in
+The frontend for Watson is a fork of Rasa's front end and can be found in
 the folder `watson_frontend`.
 The structure stayed the same so refer to [it's documentation](#rasa) for
 the documentation.
@@ -208,36 +207,38 @@ of Rasa's backend.
     and chatbot framework
 - **Dialogflow** is another chatbot framework that was used
 - **IBM Watson Assistant** as the third chatbot framework
-- Chatbot
-- **Azure** to host all of our own services, that weren't automatically
+- Chatbot Frameworks (Rasa, Dialogflow, IBM Watson Assistant)
+- **Azure** to host all of our services, that weren't automatically
     integrated into another cloud provider
-- **Docker** for developement and to wrap around the Rasa programs
-- **Azure Multi Container Environment**
-- Webhook
-- Cloud Services
+- **Docker** for development and to wrap around the Rasa programs
+- **Azure Multi Container Environment**: The container environment can be specified with a docker-compose file. The compose file is executed at startup.
+- **Webhook** is a URL that services (Dialogflow, IBM Watson Assistant)
+- Cloud Service
 - **Azure WebApp**
-- **React** and **Node** for the front-end developement
+are just containers to run your code in. A runtime stack must be chosen e.g. Python-3.6(REST) or Node-10.x (React). 
+
+- **React** and **Node** for the front-end development
 - **Material Design** and **Material Icons** for the styling of the front-ends
 
 ## Questions and Answers
 
 ### Automated Infrastructure Provisioning
 
-For the size of this project automated infrastructure provisioning was
+For the size of this project, automated infrastructure provisioning was
 not necessary.
 However, all of the services can individually and easily be scaled by requesting
-more ressources from the cloud providers.
-Even for the data backend MongoDB.Atlas allows a way to easily updgrade
+more resources from the cloud providers.
+Even for the data backend MongoDB.Atlas allows a way to easily upgrade
 the amount of RAM and storage that they provide.
 
 Therefore there is not a single point in the applications that could not
-be scaled up just through requesting more ressources.
+be scaled up just through requesting more resources.
 
 ### Scalability
 
 - Chatbots
   - Rasa: is scalable itself, runs in a Docker container so it can be scaled even further if necessary
-  - Dialogflow: up to 160 request per minute
+  - Dialogflow: up to 160 requests per minute
   - IBM Watson Assistant: No information given but messages are unlimited, Session times out after a few minutes
 
 - MongoDB: Atlas offers up to 140GB RAM and 4095GB storage with no
@@ -258,11 +259,11 @@ of issues set by the providers.
 
 ### NoSQL
 
-As data base, MongoDB was chosen.
+As a database, MongoDB was chosen.
 With MongoDB Atlas, it already offers a cloud solution and hosting.
-Additionally to being well suited for the cloud, it also has the
+Additionally, to be well suited for the cloud, it also has the
 advantage of having no predefined structure.
-Extending the database therefore is possible without having to
+Extending the database, therefore, is possible without having to
 migrate (or lose) any data.
 
 For example, the vacation functionality was added after everything else was
@@ -325,12 +326,12 @@ The simple use case can be done with three different frameworks in similar fashi
   - I don't use docker often so this part took quite some time
   - an own Docker registry has been created in Azure to pull images from
 - Availability is not that great in the free tier
-  - I had no acces to all apps of one plan for 4 days so I had to cerate a new one and redeployed everything
+  - I had no access to all apps of one plan for 4 days so I had to create a new one and redeployed everything
 - Deployment can sometimes take a lot of time when strange errors occur although it shouldn't be hard
-- functionality is scathered around in the portal
-  - e.g. Error logs or logs in general are hard to find in the beginning
+- functionality is scattered around in the portal
+  - e.g. Error logs or logs, in general, are hard to find in the beginning
   - VSCode helps with finding the logs
-- If deployment is set up once it runs smooth all the time, one click and done
+- If the deployment is set up once it runs smooth all the time, one click and done
 - It's possible to get into running Docker containers in a web shell interface which is pretty cool
 
 ### Costs
