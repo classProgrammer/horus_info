@@ -21,8 +21,169 @@ To be able to make people test the actual application for real in a convenient w
 
 ## Architecture
 
+The architecture can be categorized into four different parts:
+
+1. The data backend (MongoDB + Rest Service),
+2. the Rasa implementation,
+3. the Dialogflow implementation and
+4. the Watson implementation.
+
+Both Rasa's and Watson's implementation consist of a front and a
+backend; only Dialogflow's backend did not require an additional
+implementation.
+
+The below diagram shows how the different points are connected with each other.
+
+![UML-Diagram of the architecture](new_architecture.png)
+
+### The data backend
+
+All chatbot implementations use the same data from the MongoDB
+backend.
+The MongoDB documents are hoted via MongoDB.Atlas in Azure.
+By default they consist of three shards, that are automatically
+managed.
+
+The only interaction with that database is over its rest service, whose
+implementation can be found in the `/resteasy` folder.
+The service itself is, again, hosted in Azure.
+
+The following end points are defined:
+
+- **GET `/`** checks whether the service is currently up
+- **GET `/sick`** returns whether a user is sick
+    > For example a request body
+    > ```json
+    > { "name": "hans wurst" }
+    > ```
+    > returns
+    > ```json
+    > [{"_id": { "$oid": "5e222d1cc565840026316b80" },
+    >   "user": { "$oid": "5e222d1bc565840026316b7b" },
+    >   "sickdays": [ "10.12.2019", "11.12.2019" ]
+    > }]
+    > ```
+
+- **POST `/dialogflow/webhook`** and **POST `/watson/webhook`**
+    are the end points for the dialogflow and watson implementations
+    respectively.
+    Both read the intent of the request and depending on that either
+    register someone as sick or register a vacation (the later of
+    which is only avaialable in the dialogflow implementation).
+
+Additionally for testing some more end points were implemented:
+
+- **POST `/sick`** registers a user as sick
+    > For example a request body like this is expected:
+    > ```json
+    > { "name": "hans wurst" }
+    > ```
+
+- **GET `/sick/all`** returns all sick users
+    > For example it could return the following data set:
+    > ```json
+    > { "gerald wimmer": [ "20.01.2020" ],
+    >   "hans wurst": [ "10.12.2019", "11.12.2019", "20.01.2020" ]}
+    > ```
+
+- **GET `/vacation/all`** returns all registered vacations
+    > For example it could return the following data set:
+    > ```json
+    > [{"end": "Fri, 03 Apr 2020 10:00:00 GMT",
+    >   "start": "Wed, 01 Apr 2020 10:00:00 GMT",
+    >   "user": "hans wurst"
+    > }]
+    > ```
+
+- **GET `/dialogflow/requests`** and **GET `/watson/requests`** return
+    the last request to the dialogflow and watson webhook respectively.
+
+### Rasa
+
+Since Rasa is just a framework for chatbots and doesn't offer any cloud
+solution itself, it was wrapped in a docker container, which was then deployed
+to Azure.
+The dockerfiles and docker-compose files can be found in the folder `rasa`,
+together with the actions, data, models and the domain for rasa itself.
+
+The **Rasa Action Server** is used for custom commands, while **Rasa**
+is the Core of the application that is provided by rasa docker image.
+
+
+The frontend for rasa can be found in the folder `frontend`.
+It's implemented using React.js and consists of five main components:
+
+- _Messenger_: The main component that contains all of the other components.
+    It also manages the REST calls.
+- _MessengerSubmitArea_: Chat input and submit button
+- _MessageArea_: The wrapper for all of the message cards
+- _MessageCard_: A card that represents a message
+- _MessengerToolbar_: Purely visual component
+
+Put together it looks like this:
+
+![](https://github.com/classProgrammer/horus_frontend/raw/master/frontend.JPG)
+
+### Dialogflow
+
+Using Dialogflow next to no hosting has to be done outside of what it
+already offers.
+It is automatically integrated into the Google Cloud Platform.
+
+The frontend that can be found in `dialogflow` is barely a react-wrapper
+around an iframe that is provided by Dialogflow itself.
+
+The models used can be found in the folder `models`.
+They are shared with Watson.
+
+### Watson
+
+While Watson can be integrated with any Cloud Service, the most natural one
+is on the IBM Cloud (as Watson itself is made by IBM).
+
+The models for it can be found in the folder `models`.
+
+Additionally, however, a REST-API that connects to that cloud instance, was
+created.
+It can be found in `watson_server` and has the following end points:
+
+- **GET `/`** checks whether the server is online
+- **GET `/watson/session`** creates a new session with the Watson
+    Assistant – a class provided by the Watson framework that
+    connects to the extenal Watson server on the IBM Cloud.
+    > Example answer:
+    > ```json
+    > {"session_id":"c3d7497f-1e66-47b6-8c03-d0428135414f"}
+    > ```
+
+- **POST `/watson/send`** directs the message to the Assistant and returns its
+    answer.
+    > Example conversation:
+    > ```json
+    > { "message": "hello",
+    >   "sessionId":"c3d7497f-1e66-47b6-8c03-d0428135414f" }
+    > ```
+    > might result in the following answer:
+    > ```json
+    > { "output": {
+    >       "entities": [],
+    >       "generic": [{
+    >           "response_type": "text",
+    >           "text": "Hallo, wie kann ich helfen?" }],
+    >       "intents": [{
+    >           "confidence": 1,
+    >           "intent": "Hello" }]
+    > }}
+
+The frontend for watson is a fork of Rasa's front end and can be found in
+the folder `watson_frontend`.
+The structure stayed the same so refer to [it's documentation](#rasa) for
+the documentation.
+The only difference is that it connects to the Watson REST service instead
+of Rasa's backend.
 
 ## Technologies
+
 - Python
 - Gunicorn/Flask
 - MongoDB
@@ -45,6 +206,7 @@ To be able to make people test the actual application for real in a convenient w
 ### Automated Infrastructue Provisioning
 
 ### Scalability
+
 - Chatbots
   - Rasa: is scalable itself
   - Dialogflow: up to 160 request per minute
@@ -75,10 +237,6 @@ could immediately be added to the database.
 MongoDB Atlas promises to always have at least three data nodes deployed across
 fault domains (Azure), availability zones (AWS), or zones (GCP) and keep the
 data in-sync.
-
-## UI - React Messager Frontend
-
-- ![](https://github.com/classProgrammer/horus_frontend/blob/master/frontend.JPG)
 
 ## Comparison
 
