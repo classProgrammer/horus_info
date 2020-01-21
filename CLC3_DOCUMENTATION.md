@@ -121,6 +121,7 @@ It's implemented using React.js and consists of five main components:
 - _MessageCard_: A card that represents a message
 - _MessengerToolbar_: Purely visual component
 
+The design is very close to what people know from WhatsApp to increase acceptance. To increase usability a few features like automatically scroll to bottom on message receive and submit message when ENTER is pressed were implemented. It's also impossible to send an empty message.
 Put together it looks like this:
 
 ![](https://github.com/classProgrammer/horus_frontend/raw/master/frontend.JPG)
@@ -241,32 +242,6 @@ could immediately be added to the database.
 MongoDB Atlas promises to always have at least three data nodes deployed across
 fault domains (Azure), availability zones (AWS), or zones (GCP) and keep the
 data in-sync.
-
-## UI - React Messager Frontend
-
-<!-- TODO: Merge this section with #Architecture #Rasa and #Watson -->
-
-For the user interface a simple messanger frontend was needed.
-The basic React components of the messanger frontend are
-- Messenger
-  - Root component
-  - Container of other components
-- Header
-  - Contains the heading
-- Message Area: 
-  - Takes care of the message cards
-  - automatic scrolling is enabled 
-- Message Card: 
-  - A sender (BOT, YOU) (top left)
-  - Holds a message (middle)
-  - A timestamp (bottom right)
-  - BOT messages are blue
-  - user messages are green
-- Submit Area:
-  - Takes care of the user input 
-  - And the submission of messages
-  - ENTER can be used to trigger sending
-The design is very close to what people know from WhatsApp to increase acceptance. To increase usability a few features like automatically scroll to bottom on message receive and submit message when ENTER is pressed were implemented. It's also impossible to send an empty message.
 
 ### Picture of the Frontend in Use
 - ![](https://github.com/classProgrammer/horus_frontend/blob/master/frontend.JPG)
